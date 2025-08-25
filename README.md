@@ -43,10 +43,6 @@ A = "a,a,a", delim=","    -> split(A, delim) => ["a","a","a"]
 B = ["a","b"], delim="-"  -> join(B, "-") => "a-b"
 ```
 
-## How to Run
-1. Extract the ZIP.
-2. Open `index.html` in any modern browser. No build step required.
-
 ## Notes & Limitations
 - Factorial supports only non‑negative integers.
 - `nPr`/`nCr` should be used as `nPr(5,2)`, `nCr(5,2)`.
