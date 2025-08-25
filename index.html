@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pro Scientific + String Calculator</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Pro Scientific + String Calculator</h1>
+      <div class="mode-toggle">
+        <button id="btn-mode-sci" class="active" aria-pressed="true">Scientific</button>
+        <button id="btn-mode-str" aria-pressed="false">String</button>
+      </div>
+    </header>
+
+    <!-- SCIENTIFIC MODE -->
+    <section id="sci-mode" class="card">
+      <div class="display-row">
+        <input id="sci-display" type="text" placeholder="Enter expression (e.g., 2*sin(pi/6)+log(100))" autocomplete="off"/>
+      </div>
+      <div class="toolbar">
+        <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" id="deg-toggle" checked/>
+            <span class="slider"></span>
+          </label>
+          <span id="deg-label">Degrees</span>
+        </div>
+        <div class="memory">
+          <button data-mem="MC" title="Memory Clear">MC</button>
+          <button data-mem="MR" title="Memory Recall">MR</button>
+          <button data-mem="M+" title="Memory Add">M+</button>
+          <button data-mem="M-" title="Memory Subtract">M-</button>
+        </div>
+      </div>
+
+      <div class="grid keys">
+        <!-- Row 1 -->
+        <button data-insert="(">(</button>
+        <button data-insert=")">)</button>
+        <button data-insert="pi">π</button>
+        <button data-insert="e">e</button>
+        <button data-action="clear">C</button>
+        <button data-action="back">⌫</button>
+
+        <!-- Row 2 -->
+        <button data-fn="sin">sin</button>
+        <button data-fn="cos">cos</button>
+        <button data-fn="tan">tan</button>
+        <button data-fn="asin">asin</button>
+        <button data-fn="acos">acos</button>
+        <button data-fn="atan">atan</button>
+
+        <!-- Row 3 -->
+        <button data-fn="log">log</button>
+        <button data-fn="ln">ln</button>
+        <button data-fn="sqrt">√</button>
+        <button data-fn="exp">exp</button>
+        <button data-fn="abs">abs</button>
+        <button data-insert="!">n!</button>
+
+        <!-- Row 4 -->
+        <button data-insert="7">7</button>
+        <button data-insert="8">8</button>
+        <button data-insert="9">9</button>
+        <button data-insert="/">÷</button>
+        <button data-insert="%">%</button>
+        <button data-insert="^">^</button>
+
+        <!-- Row 5 -->
+        <button data-insert="4">4</button>
+        <button data-insert="5">5</button>
+        <button data-insert="6">6</button>
+        <button data-insert="*">×</button>
+        <button data-fn="nPr">nPr</button>
+        <button data-fn="nCr">nCr</button>
+
+        <!-- Row 6 -->
+        <button data-insert="1">1</button>
+        <button data-insert="2">2</button>
+        <button data-insert="3">3</button>
+        <button data-insert="-">−</button>
+        <button data-action="ans">Ans</button>
+        <button data-action="equals" class="accent">=</button>
+
+        <!-- Row 7 -->
+        <button data-insert="0" class="wide">0</button>
+        <button data-insert=".">.</button>
+        <button data-insert="+">+</button>
+      </div>
+
+      <div class="helper">
+        <p><strong>Tips:</strong> Supported: <code>+, -, *, /, %, ^, !, ( )</code>, functions <code>sin, cos, tan, asin, acos, atan, log, ln, sqrt, exp, abs</code>, constants <code>pi, e</code>. Use <code>nPr, nCr</code> via buttons (they insert a template).</p>
+        <p>Degree/Radian switch affects trig functions. Example: <code>2*sin(pi/6)+log(100)</code></p>
+      </div>
+    </section>
+
+    <!-- STRING MODE -->
+    <section id="str-mode" class="card hidden">
+      <div class="string-inputs">
+        <div class="field">
+          <label for="str-a">String A</label>
+          <input id="str-a" type="text" placeholder='e.g., Hello' autocomplete="off"/>
+        </div>
+        <div class="field">
+          <label for="str-b">String B</label>
+          <input id="str-b" type="text" placeholder='e.g., World' autocomplete="off"/>
+        </div>
+      </div>
+
+      <div class="string-tools">
+        <div class="row">
+          <button data-strop="concat">Concat</button>
+          <button data-strop="lengthA">len(A)</button>
+          <button data-strop="lengthB">len(B)</button>
+          <button data-strop="upperA">A→UPPER</button>
+          <button data-strop="lowerA">A→lower</button>
+          <button data-strop="reverseA">reverse(A)</button>
+        </div>
+        <div class="row">
+          <button data-strop="substrA">substr(A,start,end)</button>
+          <button data-strop="replaceA">replace(A,find,with)</button>
+          <button data-strop="trimA">trim(A)</button>
+          <button data-strop="splitA">split(A, delim)</button>
+          <button data-strop="joinB">join(B as array, delim)</button>
+        </div>
+      </div>
+
+      <div class="string-args card">
+        <div class="field small">
+          <label for="arg-start">start</label>
+          <input id="arg-start" type="number" placeholder="start index"/>
+        </div>
+        <div class="field small">
+          <label for="arg-end">end</label>
+          <input id="arg-end" type="number" placeholder="end index (exclusive)"/>
+        </div>
+        <div class="field small">
+          <label for="arg-find">find</label>
+          <input id="arg-find" type="text" placeholder="text to find"/>
+        </div>
+        <div class="field small">
+          <label for="arg-with">with</label>
+          <input id="arg-with" type="text" placeholder="replacement"/>
+        </div>
+        <div class="field small">
+          <label for="arg-delim">delim</label>
+          <input id="arg-delim" type="text" placeholder="delimiter (e.g., ,)"/>
+        </div>
+      </div>
+
+      <div class="display-row">
+        <input id="str-display" type="text" placeholder="Result will appear here" readonly/>
+        <button id="copy-result">Copy</button>
+      </div>
+    </section>
+
+    <footer>
+      <a href="README.md" target="_blank">README</a>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
